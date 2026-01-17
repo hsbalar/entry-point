@@ -1,0 +1,22 @@
+{
+  "name": "stock-avg",
+  "version": "1.0.0",
+  "description": "Stock Average Utility - Calculate weighted average buy price of stocks",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/js/main.js --bundle --outfile=dist/bundle.js --minify --sourcemap",
+    "dev": "esbuild src/js/main.js --bundle --outfile=dist/bundle.js --sourcemap --watch",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "stock",
+    "average",
+    "calculator",
+    "investment"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.20.0"
+  }
+}

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Stock Average Calculator | Easy Share & Stock Price Averaging Tool</title>
+    <meta
+      name="description"
+      content="Stock Average Calculator by Hitesh Balar helps investors calculate average stock price across multiple buys. Simple, distraction-free UI for Indian, US, and global stock markets."
+    />
+    <meta
+      name="keywords"
+      content="stock average calculator, share average calculator, stock price averaging, Indian stock market calculator, US stock market average calculator, investment calculator, trading tools, equity average calculator, stock analysis tool"
+    />
+    <meta name="author" content="Hitesh Balar" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Stock Average Calculator | Simple & Accurate" />
+    <meta
+      property="og:description"
+      content="Calculate average stock price with a simple, distraction-free interface. Perfect for investors trading in Indian and global stock markets."
+    />
+    <meta property="og:url" content="https://yourdomain.com/stock-average-calculator" />
+    <meta property="og:image" content="https://yourdomain.com/images/stock-average-calculator-preview.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:title" content="Stock Average Calculator" />
+    <meta
+      name="twitter:description"
+      content="Fast and simple stock average calculator with distraction-free UI. Help investors analyze share prices and improve investment decisions."
+    />
+
+    <link rel="stylesheet" href="src/css/styles.css" />
+  </head>
+  <body>
+    <!-- Animated Background Chart -->
+    <div class="bg-chart">
+      <svg viewBox="0 0 2400 600" preserveAspectRatio="none">
+        <!-- Horizontal grid lines -->
+        <line class="grid-line" x1="0" y1="100" x2="2400" y2="100" />
+        <line class="grid-line" x1="0" y1="200" x2="2400" y2="200" />
+        <line class="grid-line" x1="0" y1="300" x2="2400" y2="300" />
+        <line class="grid-line" x1="0" y1="400" x2="2400" y2="400" />
+        <line class="grid-line" x1="0" y1="500" x2="2400" y2="500" />
+
+        <!-- Candlesticks with doji patterns -->
+        <g class="candlesticks">
+          <!-- Candle 1 -->
+          <line class="candle-wick-green" x1="60" y1="280" x2="60" y2="380" />
+          <rect class="candle-green" x="50" y="300" width="20" height="60" rx="2" />
+
+          <!-- Candle 2 -->
+          <line class="candle-wick-green" x1="120" y1="260" x2="120" y2="340" />
+          <rect class="candle-green" x="110" y="270" width="20" height="50" rx="2" />
+
+          <!-- Candle 3 -->
+          <line class="candle-wick-red" x1="180" y1="240" x2="180" y2="320" />
+          <rect class="candle-red" x="170" y="250" width="20" height="55" rx="2" />
+
+          <!-- Candle 4 -->
+          <line class="candle-wick-green" x1="240" y1="270" x2="240" y2="350" />
+          <rect class="candle-green" x="230" y="280" width="20" height="45" rx="2" />
+
+          <!-- Candle 5 -->
+          <line class="candle-wick-green" x1="300" y1="230" x2="300" y2="310" />
+          <rect class="candle-green" x="290" y="240" width="20" height="50" rx="2" />
+
+          <!-- Candle 6 -->
+          <line class="candle-wick-green" x1="360" y1="200" x2="360" y2="280" />
+          <rect class="candle-green" x="350" y="210" width="20" height="55" rx="2" />
+
+          <!-- Candle 7 -->
+          <line class="candle-wick-red" x1="420" y1="220" x2="420" y2="300" />
+          <rect class="candle-red" x="410" y="240" width="20" height="45" rx="2" />
+
+          <!-- Candle 8 -->
+          <line class="candle-wick-red" x1="480" y1="250" x2="480" y2="330" />
+          <rect class="candle-red" x="470" y="270" width="20" height="40" rx="2" />
+
+          <!-- Candle 9 -->
+          <line class="candle-wick-green" x1="540" y1="260" x2="540" y2="340" />
+          <rect class="candle-green" x="530" y="275" width="20" height="50" rx="2" />
+
+          <!-- Candle 10 -->
+          <line class="candle-wick-green" x1="600" y1="230" x2="600" y2="310" />
+          <rect class="candle-green" x="590" y="245" width="20" height="45" rx="2" />
+
+          <!-- Candle 11 -->
+          <line class="candle-wick-green" x1="660" y1="200" x2="660" y2="280" />
+          <rect class="candle-green" x="650" y="215" width="20" height="50" rx="2" />
+
+          <!-- Candle 12 -->
+          <line class="candle-wick-green" x1="720" y1="180" x2="720" y2="260" />
+          <rect class="candle-green" x="710" y="195" width="20" height="48" rx="2" />
+
+          <!-- Candle 13 -->
+          <line class="candle-wick-red" x1="780" y1="190" x2="780" y2="270" />
+          <rect class="candle-red" x="770" y="210" width="20" height="45" rx="2" />
+
+          <!-- Candle 14 -->
+          <line class="candle-wick-red" x1="840" y1="220" x2="840" y2="300" />
+          <rect class="candle-red" x="830" y="240" width="20" height="42" rx="2" />
+
+          <!-- Candle 15 -->
+          <line class="candle-wick-green" x1="900" y1="240" x2="900" y2="320" />
+          <rect class="candle-green" x="890" y="255" width="20" height="50" rx="2" />
+
+          <!-- Candle 16 -->
+          <line class="candle-wick-green" x1="960" y1="210" x2="960" y2="290" />
+          <rect class="candle-green" x="950" y="225" width="20" height="48" rx="2" />
+
+          <!-- Candle 17 -->
+          <line class="candle-wick-green" x1="1020" y1="180" x2="1020" y2="260" />
+          <rect class="candle-green" x="1010" y="195" width="20" height="52" rx="2" />
+
+          <!-- Candle 18 -->
+          <line class="candle-wick-green" x1="1080" y1="160" x2="1080" y2="240" />
+          <rect class="candle-green" x="1070" y="175" width="20" height="48" rx="2" />
+
+          <!-- Candle 19 -->
+          <line class="candle-wick-red" x1="1140" y1="170" x2="1140" y2="250" />
+          <rect class="candle-red" x="1130" y="190" width="20" height="45" rx="2" />
+
+          <!-- Candle 20 -->
+          <line class="candle-wick-red" x1="1200" y1="200" x2="1200" y2="280" />
+          <rect class="candle-red" x="1190" y="220" width="20" height="42" rx="2" />
+
+          <!-- Repeat pattern for seamless loop -->
+          <!-- Candle 21 -->
+          <line class="candle-wick-green" x1="1260" y1="280" x2="1260" y2="380" />
+          <rect class="candle-green" x="1250" y="300" width="20" height="60" rx="2" />
+
+          <!-- Candle 22 -->
+          <line class="candle-wick-green" x1="1320" y1="260" x2="1320" y2="340" />
+          <rect class="candle-green" x="1310" y="270" width="20" height="50" rx="2" />
+
+          <!-- Candle 23 -->
+          <line class="candle-wick-red" x1="1380" y1="240" x2="1380" y2="320" />
+          <rect class="candle-red" x="1370" y="250" width="20" height="55" rx="2" />
+
+          <!-- Candle 24 -->
+          <line class="candle-wick-green" x1="1440" y1="270" x2="1440" y2="350" />
+          <rect class="candle-green" x="1430" y="280" width="20" height="45" rx="2" />
+
+          <!-- Candle 25 -->
+          <line class="candle-wick-green" x1="1500" y1="230" x2="1500" y2="310" />
+          <rect class="candle-green" x="1490" y="240" width="20" height="50" rx="2" />
+
+          <!-- Candle 26 -->
+          <line class="candle-wick-green" x1="1560" y1="200" x2="1560" y2="280" />
+          <rect class="candle-green" x="1550" y="210" width="20" height="55" rx="2" />
+
+          <!-- Candle 27 -->
+          <line class="candle-wick-red" x1="1620" y1="220" x2="1620" y2="300" />
+          <rect class="candle-red" x="1610" y="240" width="20" height="45" rx="2" />
+
+          <!-- Candle 28 -->
+          <line class="candle-wick-red" x1="1680" y1="250" x2="1680" y2="330" />
+          <rect class="candle-red" x="1670" y="270" width="20" height="40" rx="2" />
+
+          <!-- Candle 29 -->
+          <line class="candle-wick-green" x1="1740" y1="260" x2="1740" y2="340" />
+          <rect class="candle-green" x="1730" y="275" width="20" height="50" rx="2" />
+
+          <!-- Candle 30 -->
+          <line class="candle-wick-green" x1="1800" y1="230" x2="1800" y2="310" />
+          <rect class="candle-green" x="1790" y="245" width="20" height="45" rx="2" />
+
+          <!-- Candle 31 -->
+          <line class="candle-wick-green" x1="1860" y1="200" x2="1860" y2="280" />
+          <rect class="candle-green" x="1850" y="215" width="20" height="50" rx="2" />
+
+          <!-- Candle 32 -->
+          <line class="candle-wick-green" x1="1920" y1="180" x2="1920" y2="260" />
+          <rect class="candle-green" x="1910" y="195" width="20" height="48" rx="2" />
+
+          <!-- Candle 33 -->
+          <line class="candle-wick-red" x1="1980" y1="190" x2="1980" y2="270" />
+          <rect class="candle-red" x="1970" y="210" width="20" height="45" rx="2" />
+
+          <!-- Candle 34 -->
+          <line class="candle-wick-red" x1="2040" y1="220" x2="2040" y2="300" />
+          <rect class="candle-red" x="2030" y="240" width="20" height="42" rx="2" />
+
+          <!-- Candle 35 -->
+          <line class="candle-wick-green" x1="2100" y1="240" x2="2100" y2="320" />
+          <rect class="candle-green" x="2090" y="255" width="20" height="50" rx="2" />
+
+          <!-- Candle 36 -->
+          <line class="candle-wick-green" x1="2160" y1="210" x2="2160" y2="290" />
+          <rect class="candle-green" x="2150" y="225" width="20" height="48" rx="2" />
+
+          <!-- Candle 37 -->
+          <line class="candle-wick-green" x1="2220" y1="180" x2="2220" y2="260" />
+          <rect class="candle-green" x="2210" y="195" width="20" height="52" rx="2" />
+
+          <!-- Candle 38 -->
+          <line class="candle-wick-green" x1="2280" y1="160" x2="2280" y2="240" />
+          <rect class="candle-green" x="2270" y="175" width="20" height="48" rx="2" />
+
+          <!-- Candle 39 -->
+          <line class="candle-wick-red" x1="2340" y1="170" x2="2340" y2="250" />
+          <rect class="candle-red" x="2330" y="190" width="20" height="45" rx="2" />
+
+          <!-- Doji Pattern 1 (Long-legged doji) -->
+          <line class="candle-wick-green" x1="100" y1="220" x2="100" y2="380" />
+          <rect class="candle-green" x="95" y="295" width="10" height="10" rx="1" />
+
+          <!-- Doji Pattern 2 (Dragonfly doji) -->
+          <line class="candle-wick-red" x1="380" y1="260" x2="380" y2="380" />
+          <rect class="candle-red" x="375" y="258" width="10" height="6" rx="1" />
+
+          <!-- Doji Pattern 3 (Gravestone doji) -->
+          <line class="candle-wick-green" x1="560" y1="180" x2="560" y2="300" />
+          <rect class="candle-green" x="555" y="296" width="10" height="8" rx="1" />
+
+          <!-- Doji Pattern 4 (Standard doji) -->
+          <line class="candle-wick-red" x1="820" y1="240" x2="820" y2="340" />
+          <rect class="candle-red" x="815" y="287" width="10" height="8" rx="1" />
+
+          <!-- Doji Pattern 5 (Long-legged doji) -->
+          <line class="candle-wick-green" x1="1100" y1="200" x2="1100" y2="360" />
+          <rect class="candle-green" x="1095" y="275" width="10" height="12" rx="1" />
+
+          <!-- Doji Pattern 6 (Dragonfly doji) -->
+          <line class="candle-wick-green" x1="1300" y1="260" x2="1300" y2="380" />
+          <rect class="candle-green" x="1295" y="258" width="10" height="6" rx="1" />
+
+          <!-- Doji Pattern 7 (Gravestone doji) -->
+          <line class="candle-wick-red" x1="1580" y1="180" x2="1580" y2="300" />
+          <rect class="candle-red" x="1575" y="296" width="10" height="8" rx="1" />
+
+          <!-- Doji Pattern 8 (Standard doji) -->
+          <line class="candle-wick-green" x1="1760" y1="240" x2="1760" y2="340" />
+          <rect class="candle-green" x="1755" y="287" width="10" height="8" rx="1" />
+
+          <!-- Doji Pattern 9 (Long-legged doji) -->
+          <line class="candle-wick-red" x1="2020" y1="200" x2="2020" y2="360" />
+          <rect class="candle-red" x="2015" y="275" width="10" height="12" rx="1" />
+
+          <!-- Doji Pattern 10 (Dragonfly doji) -->
+          <line class="candle-wick-green" x1="2200" y1="240" x2="2200" y2="360" />
+          <rect class="candle-green" x="2195" y="238" width="10" height="6" rx="1" />
+        </g>
+
+        <!-- Volume Bars -->
+        <g class="volume-bars">
+          <rect class="volume-bar" x="50" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar high" x="110" y="490" width="18" height="90" rx="2" />
+          <rect class="volume-bar" x="170" y="530" width="18" height="50" rx="2" />
+          <rect class="volume-bar" x="230" y="510" width="18" height="70" rx="2" />
+          <rect class="volume-bar high" x="290" y="480" width="18" height="100" rx="2" />
+          <rect class="volume-bar" x="350" y="500" width="18" height="80" rx="2" />
+          <rect class="volume-bar" x="410" y="540" width="18" height="40" rx="2" />
+          <rect class="volume-bar" x="470" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar high" x="530" y="470" width="18" height="110" rx="2" />
+          <rect class="volume-bar" x="590" y="510" width="18" height="70" rx="2" />
+          <rect class="volume-bar" x="650" y="525" width="18" height="55" rx="2" />
+          <rect class="volume-bar" x="710" y="500" width="18" height="80" rx="2" />
+          <rect class="volume-bar high" x="770" y="460" width="18" height="120" rx="2" />
+          <rect class="volume-bar" x="830" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar" x="890" y="505" width="18" height="75" rx="2" />
+          <rect class="volume-bar" x="950" y="530" width="18" height="50" rx="2" />
+          <rect class="volume-bar high" x="1010" y="475" width="18" height="105" rx="2" />
+          <rect class="volume-bar" x="1070" y="510" width="18" height="70" rx="2" />
+          <rect class="volume-bar" x="1130" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar" x="1190" y="495" width="18" height="85" rx="2" />
+          <!-- Repeat for seamless scroll -->
+          <rect class="volume-bar" x="1250" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar high" x="1310" y="490" width="18" height="90" rx="2" />
+          <rect class="volume-bar" x="1370" y="530" width="18" height="50" rx="2" />
+          <rect class="volume-bar" x="1430" y="510" width="18" height="70" rx="2" />
+          <rect class="volume-bar high" x="1490" y="480" width="18" height="100" rx="2" />
+          <rect class="volume-bar" x="1550" y="500" width="18" height="80" rx="2" />
+          <rect class="volume-bar" x="1610" y="540" width="18" height="40" rx="2" />
+          <rect class="volume-bar" x="1670" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar high" x="1730" y="470" width="18" height="110" rx="2" />
+          <rect class="volume-bar" x="1790" y="510" width="18" height="70" rx="2" />
+          <rect class="volume-bar" x="1850" y="525" width="18" height="55" rx="2" />
+          <rect class="volume-bar" x="1910" y="500" width="18" height="80" rx="2" />
+          <rect class="volume-bar high" x="1970" y="460" width="18" height="120" rx="2" />
+          <rect class="volume-bar" x="2030" y="520" width="18" height="60" rx="2" />
+          <rect class="volume-bar" x="2090" y="505" width="18" height="75" rx="2" />
+          <rect class="volume-bar" x="2150" y="530" width="18" height="50" rx="2" />
+          <rect class="volume-bar high" x="2210" y="475" width="18" height="105" rx="2" />
+          <rect class="volume-bar" x="2270" y="510" width="18" height="70" rx="2" />
+          <rect class="volume-bar" x="2330" y="520" width="18" height="60" rx="2" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="bg-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <!-- Stock Ticker Tape -->
+    <div class="ticker-tape">
+      <div class="ticker-content">
+        <div class="ticker-item">
+          <span class="ticker-symbol">AAPL</span>
+          <span class="ticker-price">189.84</span>
+          <span class="ticker-change up">+1.24%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">GOOGL</span>
+          <span class="ticker-price">141.80</span>
+          <span class="ticker-change up">+0.87%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">MSFT</span>
+          <span class="ticker-price">404.87</span>
+          <span class="ticker-change down">-0.32%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">AMZN</span>
+          <span class="ticker-price">178.25</span>
+          <span class="ticker-change up">+2.15%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">NVDA</span>
+          <span class="ticker-price">547.10</span>
+          <span class="ticker-change up">+3.42%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">META</span>
+          <span class="ticker-price">390.14</span>
+          <span class="ticker-change down">-0.58%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">TSLA</span>
+          <span class="ticker-price">248.42</span>
+          <span class="ticker-change up">+1.89%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">JPM</span>
+          <span class="ticker-price">172.35</span>
+          <span class="ticker-change up">+0.45%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">V</span>
+          <span class="ticker-price">275.60</span>
+          <span class="ticker-change down">-0.21%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">WMT</span>
+          <span class="ticker-price">162.78</span>
+          <span class="ticker-change up">+0.92%</span>
+        </div>
+        <!-- Duplicate for seamless scroll -->
+        <div class="ticker-item">
+          <span class="ticker-symbol">AAPL</span>
+          <span class="ticker-price">189.84</span>
+          <span class="ticker-change up">+1.24%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">GOOGL</span>
+          <span class="ticker-price">141.80</span>
+          <span class="ticker-change up">+0.87%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">MSFT</span>
+          <span class="ticker-price">404.87</span>
+          <span class="ticker-change down">-0.32%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">AMZN</span>
+          <span class="ticker-price">178.25</span>
+          <span class="ticker-change up">+2.15%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">NVDA</span>
+          <span class="ticker-price">547.10</span>
+          <span class="ticker-change up">+3.42%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">META</span>
+          <span class="ticker-price">390.14</span>
+          <span class="ticker-change down">-0.58%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">TSLA</span>
+          <span class="ticker-price">248.42</span>
+          <span class="ticker-change up">+1.89%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">JPM</span>
+          <span class="ticker-price">172.35</span>
+          <span class="ticker-change up">+0.45%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">V</span>
+          <span class="ticker-price">275.60</span>
+          <span class="ticker-change down">-0.21%</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-symbol">WMT</span>
+          <span class="ticker-price">162.78</span>
+          <span class="ticker-change up">+0.92%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <header>
+        <div class="header-content">
+          <h1>
+            <svg
+              viewBox="0 0 24 24"
+              width="32"
+              height="32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: inline-block; vertical-align: middle; margin-right: 8px"
+            >
+              <line x1="12" y1="20" x2="12" y2="10"></line>
+              <line x1="18" y1="20" x2="18" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="16"></line>
+            </svg>
+            Stock Average Calculator
+          </h1>
+          <p class="subtitle">Calculate your weighted average buy price</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <span class="icon-sun">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+              />
+            </svg>
+          </span>
+          <span class="icon-moon">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+          </span>
+        </button>
+      </header>
+
+      <main class="main-layout" id="mainLayout">
+        <!-- Input Section -->
+        <div class="input-section">
+          <div class="card">
+            <h2 class="card-title">Add Transaction</h2>
+            <form id="transactionForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="price">Price per Share</label>
+                  <input type="number" id="price" placeholder="0.00" step="any" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input type="number" id="quantity" placeholder="0" step="any" min="0" />
+                </div>
+              </div>
+              <div id="errorMessage" class="error-message"></div>
+              <div class="btn-row">
+                <button type="submit" id="addBtn" class="btn btn-primary">
+                  <span class="btn-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg>
+                  </span>
+                  Add Transaction
+                </button>
+                <button type="button" id="resetBtn" class="btn btn-secondary">
+                  <span class="btn-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                      <path d="M3 3v5h5" />
+                    </svg>
+                  </span>
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results Section (Summary + Transactions) -->
+        <div class="results-section" id="resultsSection">
+          <!-- Price Chart -->
+          <div class="card">
+            <h2 class="card-title">Price Trend</h2>
+            <div class="chart-container" id="priceChart"></div>
+          </div>
+
+          <!-- Summary -->
+          <div class="card">
+            <h2 class="card-title">Summary</h2>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <div class="summary-label">Total Quantity</div>
+                <div class="summary-value" id="totalQuantity">0</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Total Invested</div>
+                <div class="summary-value" id="totalInvested">0.00</div>
+              </div>
+              <div class="summary-item highlight">
+                <div class="summary-label">Average Buy Price</div>
+                <div class="summary-value" id="averagePrice">0.00</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transactions List -->
+          <div class="card">
+            <div class="transactions-header">
+              <h2 class="card-title" style="margin-bottom: 0">Transactions</h2>
+              <span class="transaction-count"><span id="transactionCount">0</span> entries</span>
+            </div>
+            <div id="transactionsList" class="transactions-list"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <!-- <p>Stock Average Utility &copy; 2026</p> -->
+      </footer>
+    </div>
+
+    <script src="dist/bundle.js"></script>
+  </body>
+</html>
