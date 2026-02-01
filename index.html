@@ -436,24 +436,81 @@
           </h1>
           <p class="subtitle">Calculate your weighted average buy price</p>
         </div>
-        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
-          <span class="icon-sun">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="4" />
-              <path
-                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
-              />
-            </svg>
-          </span>
-          <span class="icon-moon">
-            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
-          </span>
-        </button>
+        <div class="header-controls">
+          <div class="tool-selector">
+            <button class="tool-selector-btn" id="toolSelectorBtn" title="Select Tool">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                />
+              </svg>
+              <span id="selectedToolName">Average Calculator</span>
+              <svg
+                class="chevron"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="tool-dropdown" id="toolDropdown">
+              <button class="tool-option active" data-tool="average">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="20" x2="12" y2="10" />
+                  <line x1="18" y1="20" x2="18" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="16" />
+                </svg>
+                <div class="tool-option-text">
+                  <span class="tool-option-name">Average Calculator</span>
+                  <span class="tool-option-desc">Calculate weighted average price</span>
+                </div>
+              </button>
+              <button class="tool-option" data-tool="smart">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                <div class="tool-option-text">
+                  <span class="tool-option-name">Smart Averaging Assistant</span>
+                  <span class="tool-option-desc">Intelligent averaging down strategies</span>
+                </div>
+              </button>
+              <button class="tool-option" data-tool="budget">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                  <line x1="1" y1="10" x2="23" y2="10" />
+                </svg>
+                <div class="tool-option-text">
+                  <span class="tool-option-name">Budget Calculator</span>
+                  <span class="tool-option-desc">Calculate shares from budget</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+            <span class="icon-sun">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                />
+              </svg>
+            </span>
+            <span class="icon-moon">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+            </span>
+          </button>
+        </div>
       </header>
 
       <main class="main-layout" id="mainLayout">
-        <!-- Input Section -->
-        <div class="input-section">
+        <!-- Input Section - Average Calculator (Default Tool) -->
+        <div class="input-section tool-panel" id="averageToolPanel" data-tool="average">
           <div class="card">
             <h2 class="card-title">Add Transaction</h2>
             <form id="transactionForm">
@@ -489,8 +546,125 @@
           </div>
         </div>
 
-        <!-- Results Section (Summary + Transactions) -->
-        <div class="results-section" id="resultsSection">
+        <!-- Smart Stock Averaging Assistant Tool -->
+        <div class="input-section tool-panel hidden" id="smartToolPanel" data-tool="smart">
+          <div class="card">
+            <h2 class="card-title">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="margin-right: 4px"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              Smart Averaging Assistant
+            </h2>
+            <form id="smartAvgForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="existingAvgPrice">Your Average Price</label>
+                  <input type="number" id="existingAvgPrice" placeholder="100.00" step="any" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="existingQty">Your Quantity</label>
+                  <input type="number" id="existingQty" placeholder="100" step="any" min="0" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="currentMarketPrice">Current Market Price</label>
+                  <input type="number" id="currentMarketPrice" placeholder="80.00" step="any" min="0" />
+                </div>
+              </div>
+              <div id="smartErrorMessage" class="error-message"></div>
+              <div class="btn-row">
+                <button type="submit" id="calculateSmartBtn" class="btn btn-primary">
+                  <span class="btn-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </span>
+                  Calculate Options
+                </button>
+                <button type="button" id="resetSmartBtn" class="btn btn-secondary">
+                  <span class="btn-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                      <path d="M3 3v5h5" />
+                    </svg>
+                  </span>
+                  Clear
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Budget-Based Quantity Calculator Tool -->
+        <div class="input-section tool-panel hidden" id="budgetToolPanel" data-tool="budget">
+          <div class="card">
+            <h2 class="card-title">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="margin-right: 4px"
+              >
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                <line x1="1" y1="10" x2="23" y2="10" />
+              </svg>
+              Budget Calculator
+            </h2>
+            <form id="budgetForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="availableBudget">Available Budget</label>
+                  <input type="number" id="availableBudget" placeholder="10000.00" step="any" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="stockPrice">Stock Price</label>
+                  <input type="number" id="stockPrice" placeholder="150.00" step="any" min="0" />
+                </div>
+              </div>
+              <div id="budgetErrorMessage" class="error-message"></div>
+              <div class="btn-row">
+                <button type="submit" id="calculateBudgetBtn" class="btn btn-primary">
+                  <span class="btn-icon">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="2" y1="8" x2="22" y2="8" />
+                      <line x1="6" y1="12" x2="6" y2="12" />
+                      <line x1="10" y1="12" x2="14" y2="12" />
+                    </svg>
+                  </span>
+                  Calculate
+                </button>
+                <button type="button" id="resetBudgetBtn" class="btn btn-secondary">
+                  <span class="btn-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                      <path d="M3 3v5h5" />
+                    </svg>
+                  </span>
+                  Clear
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results Section - Average Calculator (Summary + Transactions) -->
+        <div class="results-section" id="resultsSection" data-tool="average">
           <!-- Price Chart -->
           <div class="card">
             <h2 class="card-title">Price Trend</h2>
@@ -523,6 +697,86 @@
               <span class="transaction-count"><span id="transactionCount">0</span> entries</span>
             </div>
             <div id="transactionsList" class="transactions-list"></div>
+          </div>
+        </div>
+
+        <!-- Results Section - Smart Averaging Assistant -->
+        <div class="results-section smart-results-section" id="smartResultsSection" data-tool="smart">
+          <div class="card">
+            <h2 class="card-title">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="margin-right: 4px"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              Analysis Results
+            </h2>
+            <div class="smart-status" id="smartStatus"></div>
+            <h3 class="scenarios-title">Averaging Scenarios</h3>
+            <div class="scenarios-grid" id="scenariosGrid"></div>
+            <div class="smart-disclaimer">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+              These scenarios are for informational purposes only. Always assess your risk tolerance before investing.
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Section - Budget Calculator -->
+        <div class="results-section budget-results-section" id="budgetResultsSection" data-tool="budget">
+          <div class="card">
+            <h2 class="card-title">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="margin-right: 4px"
+              >
+                <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+              Purchase Summary
+            </h2>
+            <div class="budget-results-grid">
+              <div class="budget-result-item main">
+                <div class="budget-result-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="8.5" cy="7" r="4" />
+                    <line x1="20" y1="8" x2="20" y2="14" />
+                    <line x1="23" y1="11" x2="17" y2="11" />
+                  </svg>
+                </div>
+                <div class="budget-result-content">
+                  <span class="budget-result-label">Maximum Shares You Can Buy</span>
+                  <span class="budget-result-value" id="maxShares">0</span>
+                </div>
+              </div>
+              <div class="budget-result-item">
+                <div class="budget-result-content">
+                  <span class="budget-result-label">Total Investment</span>
+                  <span class="budget-result-value" id="totalInvestmentBudget">0.00</span>
+                </div>
+              </div>
+              <div class="budget-result-item">
+                <div class="budget-result-content">
+                  <span class="budget-result-label">Remaining Balance</span>
+                  <span class="budget-result-value" id="remainingBalance">0.00</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
