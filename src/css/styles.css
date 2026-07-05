@@ -55,15 +55,14 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   line-height: 1.6;
   min-height: 100vh;
   padding: 2rem 1rem;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   position: relative;
   overflow-x: hidden;
 }
@@ -275,7 +274,7 @@ body {
   padding: 0 1.5rem;
   font-size: 0.75rem;
   font-weight: 500;
-  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
 }
 
 .ticker-symbol {
@@ -400,7 +399,7 @@ body {
 }
 
 /* Legacy support for has-transactions */
-.main-layout.has-transactions .results-section[data-tool="average"] {
+.main-layout.has-transactions .results-section[data-tool='average'] {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
@@ -460,9 +459,7 @@ h1 {
 
 .theme-toggle:focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 2px hsl(var(--background)),
-    0 0 0 4px hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 .theme-toggle .icon-sun,
@@ -507,9 +504,7 @@ h1 {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   border-radius: 8px;
-  box-shadow:
-    0 1px 3px 0 rgb(0 0 0 / 0.1),
-    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   padding: 1.5rem;
   margin-bottom: 1rem;
   transition: all 0.2s ease;
@@ -530,7 +525,7 @@ h1 {
 }
 
 .card-title::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 3px;
   height: 1em;
@@ -556,7 +551,7 @@ label {
   color: hsl(var(--foreground));
 }
 
-input[type="number"] {
+input[type='number'] {
   width: 100%;
   padding: 0.625rem 0.875rem;
   border: 1px solid hsl(var(--border));
@@ -568,27 +563,27 @@ input[type="number"] {
   height: 40px;
 }
 
-input[type="number"]::placeholder {
+input[type='number']::placeholder {
   color: hsl(var(--muted-foreground));
 }
 
-input[type="number"]:hover {
+input[type='number']:hover {
   border-color: hsl(var(--foreground) / 0.2);
 }
 
-input[type="number"]:focus {
+input[type='number']:focus {
   outline: none;
   border-color: hsl(var(--ring));
   box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
 }
 
 /* Remove number input spinners for cleaner look */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -618,9 +613,7 @@ input[type="number"] {
 
 .btn:focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 2px hsl(var(--background)),
-    0 0 0 4px hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 .btn:disabled {
@@ -630,28 +623,33 @@ input[type="number"] {
 
 .btn-primary {
   flex: 1;
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.85) 100%);
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary) / 0.85) 100%
+  );
   color: hsl(var(--primary-foreground));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid hsl(var(--primary-foreground) / 0.1);
-  box-shadow:
-    0 2px 8px -2px hsl(var(--primary) / 0.4),
+  box-shadow: 0 2px 8px -2px hsl(var(--primary) / 0.4),
     inset 0 1px 0 hsl(var(--primary-foreground) / 0.15);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, hsl(var(--primary) / 0.95) 0%, hsl(var(--primary) / 0.8) 100%);
-  box-shadow:
-    0 4px 12px -2px hsl(var(--primary) / 0.5),
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.95) 0%,
+    hsl(var(--primary) / 0.8) 100%
+  );
+  box-shadow: 0 4px 12px -2px hsl(var(--primary) / 0.5),
     inset 0 1px 0 hsl(var(--primary-foreground) / 0.2);
   transform: translateY(-1px);
 }
 
 .btn-primary:active {
   transform: translateY(0) scale(0.98);
-  box-shadow:
-    0 1px 4px -1px hsl(var(--primary) / 0.4),
+  box-shadow: 0 1px 4px -1px hsl(var(--primary) / 0.4),
     inset 0 1px 0 hsl(var(--primary-foreground) / 0.1);
 }
 
@@ -734,13 +732,17 @@ input[type="number"] {
 }
 
 .summary-item.highlight::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, hsl(0 0% 100% / 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    hsl(0 0% 100% / 0.1) 100%
+  );
   pointer-events: none;
 }
 
@@ -888,9 +890,7 @@ input[type="number"] {
 .delete-btn:focus-visible {
   opacity: 1;
   outline: none;
-  box-shadow:
-    0 0 0 2px hsl(var(--background)),
-    0 0 0 4px hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 footer {
@@ -923,7 +923,7 @@ footer {
     flex: 0 0 auto;
   }
 
-  .main-layout.has-transactions .results-section[data-tool="average"],
+  .main-layout.has-transactions .results-section[data-tool='average'],
   .main-layout.has-results .results-section.active {
     transform: translateY(0);
   }
@@ -1008,10 +1008,7 @@ footer {
 
 .chart-dot {
   fill: hsl(var(--primary));
-  transition:
-    cx 0.5s ease-out,
-    cy 0.5s ease-out,
-    opacity 0.3s ease;
+  transition: cx 0.5s ease-out, cy 0.5s ease-out, opacity 0.3s ease;
 }
 
 .chart-dot.trend-up {
@@ -1026,10 +1023,7 @@ footer {
   fill: none;
   stroke: hsl(var(--primary) / 0.3);
   stroke-width: 2;
-  transition:
-    cx 0.5s ease-out,
-    cy 0.5s ease-out,
-    opacity 0.3s ease;
+  transition: cx 0.5s ease-out, cy 0.5s ease-out, opacity 0.3s ease;
 }
 
 .chart-label {
@@ -1037,10 +1031,8 @@ footer {
   font-weight: 600;
   fill: hsl(var(--foreground));
   text-anchor: middle;
-  transition:
-    all 0.5s ease-out,
-    opacity 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: all 0.5s ease-out, opacity 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Dark mode chart adjustments */
@@ -1119,8 +1111,7 @@ footer {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   border-radius: 12px;
-  box-shadow:
-    0 10px 40px -10px rgb(0 0 0 / 0.2),
+  box-shadow: 0 10px 40px -10px rgb(0 0 0 / 0.2),
     0 4px 6px -2px rgb(0 0 0 / 0.1);
   padding: 0.5rem;
   opacity: 0;
@@ -1280,7 +1271,7 @@ footer {
 }
 
 .scenario-card.recommended::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -1512,6 +1503,134 @@ footer {
 
 .budget-result-item:not(.main) .budget-result-value {
   color: hsl(var(--foreground));
+}
+
+/* =====================================================
+   PROFIT/LOSS CALCULATOR STYLES
+   ===================================================== */
+
+.pnl-results-section .card {
+  animation: slideUp 0.3s ease;
+}
+
+.pnl-hero {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.pnl-hero.profit {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--success) / 0.15) 0%,
+    hsl(var(--success) / 0.05) 100%
+  );
+  border: 1px solid hsl(var(--success) / 0.3);
+}
+
+.pnl-hero.loss {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--destructive) / 0.15) 0%,
+    hsl(var(--destructive) / 0.05) 100%
+  );
+  border: 1px solid hsl(var(--destructive) / 0.3);
+}
+
+.pnl-hero.neutral {
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+}
+
+.pnl-hero-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.5rem;
+}
+
+.pnl-hero-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.pnl-hero.profit .pnl-hero-value {
+  color: hsl(var(--success));
+}
+
+.pnl-hero.loss .pnl-hero-value {
+  color: hsl(var(--destructive));
+}
+
+.pnl-hero.neutral .pnl-hero-value {
+  color: hsl(var(--foreground));
+}
+
+.pnl-hero-percent {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pnl-hero.profit .pnl-hero-percent {
+  color: hsl(var(--success));
+}
+
+.pnl-hero.loss .pnl-hero-percent {
+  color: hsl(var(--destructive));
+}
+
+.pnl-hero.neutral .pnl-hero-percent {
+  color: hsl(var(--muted-foreground));
+}
+
+.pnl-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.pnl-detail-item {
+  background: hsl(var(--muted));
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pnl-detail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--muted-foreground));
+}
+
+.pnl-detail-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  font-variant-numeric: tabular-nums;
+}
+
+.pnl-detail-item:last-child .pnl-detail-value {
+  color: hsl(var(--primary));
+}
+
+@media (max-width: 480px) {
+  .pnl-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pnl-hero-value {
+    font-size: 2rem;
+  }
 }
 
 /* =====================================================
