@@ -123,10 +123,30 @@ export class StockCalculator {
 
     // Define averaging strategies based on risk levels
     const strategies = [
-      { name: "Conservative", multiplier: 0.25, riskLevel: "low", description: "Low risk, minimal additional capital" },
-      { name: "Moderate", multiplier: 0.5, riskLevel: "medium", description: "Balanced approach" },
-      { name: "Aggressive", multiplier: 1.0, riskLevel: "high", description: "Match existing position" },
-      { name: "Double Down", multiplier: 2.0, riskLevel: "high", description: "Double your position" },
+      {
+        name: 'Conservative',
+        multiplier: 0.25,
+        riskLevel: 'low',
+        description: 'Low risk, minimal additional capital',
+      },
+      {
+        name: 'Moderate',
+        multiplier: 0.5,
+        riskLevel: 'medium',
+        description: 'Balanced approach',
+      },
+      {
+        name: 'Aggressive',
+        multiplier: 1.0,
+        riskLevel: 'high',
+        description: 'Match existing position',
+      },
+      {
+        name: 'Double Down',
+        multiplier: 2.0,
+        riskLevel: 'high',
+        description: 'Double your position',
+      },
     ];
 
     let bestScenario = null;
@@ -144,7 +164,12 @@ export class StockCalculator {
       // Calculate a score for recommendation (balance between capital efficiency and price change)
       // Higher score = better recommendation
       const capitalEfficiency = priceChange / additionalCapital; // change per dollar spent
-      const riskMultiplier = strategy.riskLevel === "low" ? 1.2 : strategy.riskLevel === "medium" ? 1.0 : 0.8;
+      const riskMultiplier =
+        strategy.riskLevel === 'low'
+          ? 1.2
+          : strategy.riskLevel === 'medium'
+          ? 1.0
+          : 0.8;
       const score = capitalEfficiency * riskMultiplier * 1000;
 
       const scenario = {
@@ -205,6 +230,52 @@ export class StockCalculator {
       totalCost,
       remainingBalance,
       valid: true,
+    };
+  }
+
+  /**
+   * Calculates profit/loss for a stock position
+   * @param {number} buyPrice - Purchase price per share
+   * @param {number} quantity - Number of shares
+   * @param {number} sellPrice - Sell/current price per share
+   * @returns {object} P&L details
+   */
+  calculateProfitLoss(buyPrice, quantity, sellPrice) {
+    if (buyPrice <= 0 || quantity <= 0 || sellPrice <= 0) {
+      return {
+        valid: false,
+        totalInvestment: 0,
+        currentValue: 0,
+        profitLoss: 0,
+        profitLossPercent: 0,
+        perSharePL: 0,
+        isProfit: false,
+        breakEvenPercent: 0,
+      };
+    }
+
+    const totalInvestment = buyPrice * quantity;
+    const currentValue = sellPrice * quantity;
+    const profitLoss = currentValue - totalInvestment;
+    const profitLossPercent = (profitLoss / totalInvestment) * 100;
+    const perSharePL = sellPrice - buyPrice;
+    const isProfit = profitLoss >= 0;
+
+    // Calculate break-even percentage needed (only relevant when in loss)
+    let breakEvenPercent = 0;
+    if (!isProfit && sellPrice > 0) {
+      breakEvenPercent = ((buyPrice - sellPrice) / sellPrice) * 100;
+    }
+
+    return {
+      valid: true,
+      totalInvestment,
+      currentValue,
+      profitLoss,
+      profitLossPercent,
+      perSharePL,
+      isProfit,
+      breakEvenPercent,
     };
   }
 }
